@@ -1,6 +1,3 @@
-var playerScores = 0;
-var computerScores = 0;
-
 function getComputerChoice() {
   num = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
   if (num === 1) {
@@ -12,9 +9,10 @@ function getComputerChoice() {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
   playerSelection = playerSelection.toLowerCase().trim();
-  computerSelection = computerSelection.toLowerCase();
+  computerSelection = getComputerChoice().toLowerCase();
+
   //PLAYER SELECTED ROCK
   if (playerSelection === "rock" && computerSelection == "paper") {
     computerScores++;
@@ -49,16 +47,52 @@ function playRound(playerSelection, computerSelection) {
     return "You lose! Rock beats Scissors";
   }
 }
+function restartGame() {
+  restart.style.visibility = "hidden";
+  playerScores = 0;
+  computerScores = 0;
+  noOfMatches = 0;
+  result.textContent = "";
+  button1.disabled = false;
+  button2.disabled = false;
+  button3.disabled = false;
+  playerScoreHeading.textContent = "Your Scores:" + playerScores;
+  computerScoreHeading.textContent = "Computer Scores:" + computerScores;
+}
+function btnClicked(e) {
+  noOfMatches++;
+  let playerSelection = e.target.textContent;
+  result.textContent = playRound(playerSelection);
+  playerScoreHeading.textContent = "Your Scores:" + playerScores;
+  computerScoreHeading.textContent = "Computer Scores:" + computerScores;
+  if (noOfMatches == 5) {
+    button1.disabled = true;
+    button2.disabled = true;
+    button3.disabled = true;
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Enter your selection: ");
-    let computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
+    result.textContent =
+      playerScores > computerScores ? "You won!" : "You Lost!";
+    restart.style.visibility = "visible";
+
+    playerScores = 0;
+    computerScores = 0;
   }
-  console.log(
-    "Your scores:" + playerScores + "   Computer scores:" + computerScores
-  );
 }
 
-game();
+var playerScores = 0;
+var computerScores = 0;
+var noOfMatches = 0;
+
+let button1 = document.getElementById("1");
+let button2 = document.getElementById("2");
+let button3 = document.getElementById("3");
+let restart = document.getElementById("restart");
+let result = document.querySelector(".result");
+let playerScoreHeading = document.querySelector(".playerScores");
+let computerScoreHeading = document.querySelector(".computerScores");
+
+restart.addEventListener("click", restartGame);
+
+button1.addEventListener("click", btnClicked);
+button2.addEventListener("click", btnClicked);
+button3.addEventListener("click", btnClicked);

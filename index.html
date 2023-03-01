@@ -2,8 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script src="code.js"></script>
+    <script src="./code.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
     <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Your Choice</h1>
+    <div class="buttons">
+      <button id="1">Rock</button>
+      <button id="2">Paper</button>
+      <button id="3">Scissors</button>
+    </div>
+    <div class="currentScores">
+      <h4 class="playerScores">Your Scores:0</h4>
+      <h4 class="computerScores">Computer Scores:0</h4>
+    </div>
+    <div class="result"></div>
+    <button id="restart">Restart</button>
+  </body>
 </html>

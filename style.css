@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkolivegreen;
+  color: aliceblue;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: wheat;
+  padding: 18px;
+  width: 450px;
+  height: 40px;
+  border-radius: 35px;
+}
+button {
+  border: none;
+  border-radius: 25px;
+  font-size: medium;
+  font-weight: bold;
+  padding: 10px;
+  background-color: cadetblue;
+  color: aliceblue;
+}
+button:hover {
+  cursor: pointer;
+  transition: 0.1s;
+  font-size: 19px;
+}
+#restart {
+  margin: 25px;
+  visibility: hidden;
+}
+.result {
+  font-size: 60px;
+  font-family: cursive;
+  color: black;
+}
+h4 {
+  font-size: 20px;
+}
