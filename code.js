@@ -70,9 +70,13 @@ function btnClicked(e) {
     button2.disabled = true;
     button3.disabled = true;
 
-    result.textContent =
-      playerScores > computerScores ? "You won!" : "You Lost!";
-    restart.style.visibility = "visible";
+    if (computerScores == playerScores) {
+      result.textContent = "Draw!";
+    } else {
+      result.textContent =
+        playerScores > computerScores ? "You won!" : "You Lost!";
+      restart.style.visibility = "visible";
+    }
 
     playerScores = 0;
     computerScores = 0;
